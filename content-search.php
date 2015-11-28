@@ -7,7 +7,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix wide-post'); ?>>
 
   <?php if ( has_post_thumbnail() ) : ?>
-    <div class="entry-thumb col-md-4 col-sm-4 col-xs-4">
+    <div class="entry-thumb col-md-5 col-sm-5 col-xs-5">
       <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" >
         <div class="thumb-icon"><i class="fa fa-globe"></i></div>
         <?php the_post_thumbnail('moesia-thumb'); ?>
@@ -17,7 +17,7 @@
 
 
   <?php if (has_post_thumbnail()) : ?>
-    <?php $has_thumb = "col-md-8 col-sm-8 col-xs-8"; ?>
+    <?php $has_thumb = "col-md-7 col-sm-7 col-xs-7"; ?>
   <?php else : ?>
     <?php $has_thumb = ""; ?>
   <?php endif; ?>
