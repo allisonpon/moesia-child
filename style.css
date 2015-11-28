@@ -386,6 +386,7 @@ div.sfsiplus_norm_row.sfsi_plus_wDiv {
 
 .sfsiplus_norm_row {
   margin: auto;
+  float: none;
 }
 
 #secondary .sfsiplus_norm_row {
@@ -438,6 +439,7 @@ input {
   margin-bottom: 0em;
 }
 
+/* Tidy up display for category and search indices */
 article.wide-post {
   background-color: white;
   border: 1px solid #ebebeb;
@@ -447,4 +449,15 @@ article.wide-post {
 article.wide-post .entry-thumb,
 article.wide-post .post-content {
   border: none;
+}
+
+/* Fix gallery layout */
+.hentry .entry-content img {
+  margin-bottom: 0px;
+}
+
+.wc-image-links .gallery-caption, 
+.wc-gallery-captions-onhover .gallery-caption, 
+.wc-gallery-captions-showon .gallery-caption {
+  color: #333;
 }

@@ -36,6 +36,10 @@
     <div class="entry-summary">
       <?php if ( (get_theme_mod('full_content') == 1) && is_home() ) : ?>
         <?php the_content(); ?>
+      <?php elseif ( in_category("galleries") && ! in_category("travel-journal") ) : ?>
+        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" >
+        View the gallery.
+        </a>
       <?php else : ?>
         <?php the_excerpt(); ?>
       <?php endif; ?>
