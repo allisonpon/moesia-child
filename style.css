@@ -1,0 +1,415 @@
+/*
+ Theme Name:   Moesia Child
+ Theme URI:    http://2peas.ca
+ Description:  A child theme of Moesia
+ Author:       Allison Pon
+ Author URI:   http://2peas.ca
+ Template:     moesia-custom
+ Version:      1.0.0
+ Tags: fluid-layout, responsive-layout, accessibility-ready, translation-ready
+ License: GNU General Public License v3
+ License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ Text Domain:  moesia-child
+*/
+
+/* AT_GREEN: #39B54A;
+   AT_DARK_GREEN: #226D2C;
+   AT_LIGHT_GREEN: #88D392; 
+   AT_PINK: #B53959;
+   AT_DARK_PINK: #912E47;
+   AT_DARK_BLUE: #1C6882;
+*/
+
+/* Adjust logo and navbar */
+.site-branding {
+  height: auto;
+  position: absolute;
+  top: -62px;
+  left: 50px;
+  z-index: 9999;
+}
+
+@media screen and (min-width: 992px) {
+  .is-sticky .site-logo {
+    height: 50px;
+    width: auto;
+  }
+
+  .is-sticky .site-branding {
+    padding: 5px 15px;
+    position: absolute;
+    top: 0px;
+    left: 50px;
+  }
+}
+
+.top-bar {
+  opacity: 1; 
+}
+
+.single .site-header {
+  height: 50px !important;
+}
+
+.main-navigation {
+  margin-left: 33.3%;
+}
+
+.main-navigation ul {
+  float: left;
+}
+
+.main-navigation li {
+  text-transform: none;
+}
+
+.main-navigation li a:hover, .main-navigation li a:focus {
+  text-decoration: none;
+}
+
+.main-navigation ul ul {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  float: left;
+  left: -999em;
+  z-index: 99999;
+}
+
+.main-navigation ul ul ul {
+  left: -999em;
+  top: 0;
+}
+
+.main-navigation ul ul li {
+  text-align: left;
+  padding: 0.5em 1em;
+  border-radius: 0px;
+  font-size: 16px;
+}
+
+.main-navigation .sub-menu li:hover,
+.main-navigation .sub-menu li:focus {
+  background-color: #88D392;
+}
+
+.main-navigation .sub-menu li:hover a,
+.main-navigation .sub-menu li:focus a {
+  color: #226D2C;
+}
+
+.main-navigation li:hover > a,
+.main-navigation li:focus > a,
+.main-navigation ul ul a {
+  color: white;
+}
+
+.main-navigation ul ul li, .is-sticky .main-navigation ul ul li {
+  border-bottom: none;
+  padding: 10px;
+}
+
+.main-navigation ul li:hover > ul,
+.main-navigation ul li:focus > ul {
+  left: 0em;
+}
+
+.main-navigation ul ul li:hover > ul,
+.main-navigation ul ul li:focus > ul {
+  left: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .main-navigation ul ul li {
+    text-align: center;
+  }
+  .main-navigation ul ul {
+    box-shadow: none;
+    display: block;
+    width: 100%;
+  }
+  .main-navigation li {
+    padding: 0px !important;
+  }
+  .main-navigation li a {
+    padding: 5px 0px;
+  }
+  .main-navigation {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+}
+
+.menu-toggle {
+  margin: 15.5px 0 !important;
+}
+
+/* Adjust header */
+.welcome-desc {
+  background-color: rgba(255, 255, 255, 0.80);
+  padding: 5px 10px;
+  width: auto;
+  display: inline-block;
+}
+
+/* Adjust buttons */
+.post-navigation,
+.paging-navigation,
+.post-navigation a,
+.paging-navigation a,
+button, 
+html input[type="button"], 
+input[type="reset"], 
+input[type="submit"] {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  color: white;
+  border-radius: 0;
+  text-decoration: none;
+  font-size: 16px;
+  box-shadow: none;
+}
+
+.post-navigation .nav-previous, 
+.post-navigation .nav-next, 
+.paging-navigation .nav-previous, 
+.paging-navigation .nav-next {
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.post-navigation a:hover,
+.paging-navigation a:hover,
+button:hover, 
+html input[type="button"]:hover, 
+input[type="reset"]:hover, 
+input[type="submit"]:hover  {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  color: #226D2C;
+  text-decoration: none;
+  background-color: #88D392 !important;
+}
+
+.post-navigation .nav-previous:hover,
+.post-navigation .nav-next:hover,
+.paging-navigation .nav-previous:hover,
+.paging-navigation .nav-next:hover,
+.post-navigation .nav-previous:hover a,
+.post-navigation .nav-next:hover a,
+.paging-navigation .nav-previous:hover a,
+.paging-navigation .nav-next:hover a,
+.submit:hover {
+  border-radius: 0;
+  background-color: #88D392;
+  color: #226D2C;
+}
+
+body {
+  background: url('images/swirl_pattern.png');
+}
+
+/* Adjust post appearance */
+.entry-header {
+  border-bottom: 1px solid #ebebeb;
+}
+.entry-thumb img {
+  border: none;
+  margin: auto;
+  display: block;
+}
+.entry-thumb img:hover {
+  opacity: 0.7;
+}
+.entry-footer {
+  border-top: 1px solid #ebebeb;
+}
+.hentry .post-content,
+.single .hentry,
+.page .hentry {
+  border: 1px solid #ebebeb;
+}
+
+.entry-cat {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  margin: 0px;
+}
+
+.entry-thumb {
+  border-top: 1px solid #ebebeb;
+  border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+  position: relative;
+  background-color: white;
+}
+
+.entry-cat .cat-links {
+  float: right;
+  padding: 5px 10px;
+  color: white;
+}
+
+.entry-cat .cat-links a,
+.entry-cat .cat-links a:hover {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  color: white;
+}
+
+.read-more {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  color: #cfcfcf;
+}
+
+.thumb-icon {
+  display: table;
+  width: 100%;
+  position: absolute;
+  font-size: 50px;
+  color: #3C3C3C;
+  top: 20%;
+  left: -20%;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: 0.3s all 0.2s;
+  transition: 0.3s all 0.2s;
+}
+.entry-thumb img {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  display: table;
+  margin: 0 auto;
+}
+.entry-thumb:hover img {
+  opacity: 0.3; 
+}
+.entry-thumb a:hover > .thumb-icon {
+  top: calc(50% - 35px);
+  left: 0;
+  z-index: 999;
+  opacity: 1;
+}
+
+article.sticky.hentry .post-content,
+article.sticky .entry-thumb {
+  border: none;
+}
+
+/* Adjust page content */
+.content-area:not(.fullwidth) {
+  max-width: 980px;
+  width: auto;
+  float: none;
+  margin: auto;
+}
+
+.search .hentry {
+  border: 1px solid #ebebeb;
+  padding: 30px;
+  background-color: #fff;
+}
+
+.single-thumb img {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.page article > footer {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+}
+
+.comment-body,
+.comment-reply-link,
+input#author,
+input#email,
+input#url,
+textarea#comment {
+  border: 1px solid #ebebeb;
+}
+
+/* Sort of hack for putting the sidebar in the footer */
+footer .widget-area {
+  display: block;
+  float: none;
+  width: 100%;
+  border: none;
+  margin: 0px;
+}
+
+.site-footer {
+  padding: 0px;
+  border: none;
+}
+footer .site-info {
+  padding: 10px;
+  text-align: right;
+  background-color: transparent;
+  color: white;
+}
+
+footer .site-info a, 
+footer .site-info a:hover {
+  color: white;
+}
+
+#secondary {
+  position: relative;
+  border-top: 1px solid #ebebeb;
+  background-color: #f2f2f2;
+}
+
+#secondary div#sfsi_holder.sfsi_plus_holders {
+  height: auto !important;
+  float: none !important;
+}
+
+#secondary .widget {
+  margin: 0 0 0.5em;
+}
+
+#secondary div.sfsiplus_norm_row.sfsi_plus_wDiv {
+  position: relative !important;
+  text-align: center;
+}
+
+#secondary .sfsiplus_norm_row {
+  margin: 0px auto;
+  float: none;
+}
+
+#secondary div.sfsi_plus_widget {
+  min-height: 0px !important;
+}
+#secondary div.sfsi_plus_wicons {
+  margin-bottom: 0px !important;
+  vertical-align: bottom;
+}
+
+#secondary aside {
+  text-align: center;
+}
+
+aside.widget_search input[type="search"] {
+  padding: 5px;
+  border: 1px solid #ebebeb;
+  font-weight: normal;
+  color: black;
+}
+
+aside.widget_search label {
+  margin: 0px;
+}
+
+.widget-area {
+  padding: 10px;
+}
+
+input {
+  padding: 14px;
+  border: 1px solid #ebebeb;
+  color: #333;
+}
