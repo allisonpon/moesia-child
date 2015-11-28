@@ -1,62 +1,75 @@
 <?php
 /**
- * The template part for displaying results in search pages.
- *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
  * @package Moesia
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <header class="entry-header">
-    <?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix wide-post'); ?>>
 
-    <?php if ( 'post' == get_post_type() ) : ?>
-    <div class="entry-meta">
-      <?php moesia_posted_on(); ?>
-    </div><!-- .entry-meta -->
-    <?php endif; ?>
-  </header><!-- .entry-header -->
+  <?php if ( has_post_thumbnail() ) : ?>
+    <div class="entry-thumb col-md-4 col-sm-4 col-xs-4">
+      <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" >
+        <div class="thumb-icon"><i class="fa fa-globe"></i></div>
+        <?php the_post_thumbnail('moesia-thumb'); ?>
+      </a>      
+    </div>  
+  <?php endif; ?>
 
-  <div class="entry-summary">
-    <?php the_excerpt(); ?>
-  </div><!-- .entry-summary -->
 
-  <footer class="entry-footer">
-    <?php
-      /* translators: used between list items, there is a space after the comma */
-      $category_list = get_the_category_list( __( ', ', 'moesia' ) );
+  <?php if (has_post_thumbnail()) : ?>
+    <?php $has_thumb = "col-md-8 col-sm-8 col-xs-8"; ?>
+  <?php else : ?>
+    <?php $has_thumb = ""; ?>
+  <?php endif; ?>
 
-      /* translators: used between list items, there is a space after the comma */
-      $tag_list = get_the_tag_list( '', __( ', ', 'moesia' ) );
+  <div class="post-content <?php echo $has_thumb; ?>">
+    <header class="entry-header">
+      <?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 
-      if ( ! moesia_categorized_blog() ) {
-        // This blog only has 1 category so we just need to worry about tags in the meta text
-        if ( '' != $tag_list ) {
-          $meta_text = '<i class="fa fa-tag"></i> %2$s' . '<i class="fa fa-link"></i>' . __( '<a href="%3$s" rel="bookmark"> permalink</a>.', 'moesia' );
-        } else {
-          $meta_text = '<span><i class="fa fa-link"></i>' . __( '<a href="%3$s" rel="bookmark"> permalink</a>', 'moesia' ) . '</span>';
-        }
+      <?php if ( 'post' == get_post_type() ) : ?>
+      <div class="entry-meta">
+        <?php moesia_posted_on(); ?>
+      </div><!-- .entry-meta -->
+      <?php endif; ?>
+    </header><!-- .entry-header -->
 
-      } else {
-        // But this blog has loads of categories so we should probably display them here
-        if ( '' != $tag_list ) {
-          $meta_text = '<span><i class="fa fa-folder"></i> %1$s</span>' . '<span><i class="fa fa-tag"></i> %2$s</span>' . '<span><i class="fa fa-link"></i>' . __( '<a href="%3$s" rel="bookmark"> permalink</a>', 'moesia' ) . '</span>';
-        } else {
-          $meta_text = '<span><i class="fa fa-folder"></i> %1$s</span>' . '<span><i class="fa fa-link"></i>' . __( '<a href="%3$s" rel="bookmark"> permalink</a>', 'moesia' ) . '</span>';
-        }
+    <div class="entry-summary">
+      <?php if ( (get_theme_mod('full_content') == 1) && is_home() ) : ?>
+        <?php the_content(); ?>
+      <?php else : ?>
+        <?php the_excerpt(); ?>
+      <?php endif; ?>
+    </div><!-- .entry-content -->
 
-      } // end check for categories on this blog
+    <footer class="entry-footer">
+      <?php if ( 'post' == get_post_type() ) : // Hide category and tag text for pages on Search ?>
+        <?php
+          /* translators: used between list items, there is a space after the comma */
+          $categories_list = get_the_category_list( __( ', ', 'moesia' ) );
+          if ( $categories_list && moesia_categorized_blog() ) :
+        ?>
+        <span class="cat-links">
+          <?php echo '<i class="fa fa-folder"></i>&nbsp;' . $categories_list; ?>
+        </span>
+        <?php endif; // End if categories ?>
 
-      printf(
-        $meta_text,
-        $category_list,
-        $tag_list,
-        get_permalink()
-      );
-    ?>
+        <?php
+          /* translators: used between list items, there is a space after the comma */
+          $tags_list = get_the_tag_list( '', __( ', ', 'moesia' ) );
+          if ( $tags_list ) :
+        ?>
+        <span class="tags-links">
+          <?php echo '<i class="fa fa-tag"></i>&nbsp;' . $tags_list; ?>
+        </span>
+        <?php endif; // End if $tags_list ?>
+      <?php endif; // End if 'post' == get_post_type() ?>
 
-    <?php edit_post_link( __( 'Edit', 'moesia' ), '<span class="edit-link"><i class="fa fa-edit"></i>&nbsp;', '</span>' ); ?>
-  </footer><!-- .entry-footer -->
+      <?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
+      <span class="comments-link"><i class="fa fa-comment"></i>&nbsp;<?php comments_popup_link( __( 'Leave a comment', 'moesia' ), __( '1 Comment', 'moesia' ), __( '% Comments', 'moesia' ) ); ?></span>
+      <?php endif; ?>
+
+      <?php edit_post_link( __( 'Edit', 'moesia' ), '<span class="edit-link"><i class="fa fa-edit"></i>&nbsp;', '</span>' ); ?>
+    </footer><!-- .entry-footer -->
+  </div>
+
 </article><!-- #post-## -->
